@@ -1,0 +1,33 @@
+<!--
+    Generated template for the TasklistPage page.
+
+    See http://ionicframework.com/docs/components/#navigation for more info on
+    Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>Makanan Favorit</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-start (click)="addItem()">
+                <ion-icon name="add-circle"></ion-icon>
+                Add Item
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item-sliding *ngFor="let task of tasks"#slidingItem>
+            <ion-item [ngClass]="{taskdone: task.status=='done'}">{{task.title}}</ion-item>
+                <ion-item-options side="right">
+                    <button ion-button icon-only color="secondary" (click)="markAsDone(slidingItem,task)">
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                    </button>
+                    <button ion-button icon-only color="danger" (click)="removeTask(slidingItem,task)">
+                        <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
+        </ion-item-sliding> 
+    </ion-list>
+</ion-content>
